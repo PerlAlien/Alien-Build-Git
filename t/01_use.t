@@ -2,6 +2,8 @@ use Test2::V0;
 sub require_ok ($);
 
 require_ok 'Alien::Build::Plugin::Download::Git';
+require_ok 'Alien::Build::Plugin::Fetch::Git';
+require_ok 'Alien::git';
 
 done_testing;
 
