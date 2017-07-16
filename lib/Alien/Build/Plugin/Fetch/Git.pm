@@ -19,10 +19,27 @@ use Capture::Tiny qw( capture_merged );
 
  use alienfile;
  
- meta->prop->{start_url} = 'git://
+ meta->prop->{start_url} = 'git://example.git/foo.git#v0.01';
  plugin 'Fetch::Git';
 
 =head1 DESCRIPTION
+
+This plugin provides a fetch capability for C<git> in L<Alien::Build>.
+You can specify a tag or branch with the fragment part of the URL.
+Most of the time you won't be using this plugin directly, but will
+instead be using L<Alien::git> or L<Alien::Build::Plugin::Download::Git>.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Alien::Build>
+
+=item L<Alien::Build::Git>
+
+=item L<Alien::Builg::Plugin::Download::Git>
+
+=back
 
 =cut
 
