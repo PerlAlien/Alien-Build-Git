@@ -1,6 +1,12 @@
-# Alien::Build::Plugin::Download::Git [![Build Status](https://secure.travis-ci.org/plicease/Alien-Build-Plugin-Download-Git.png)](http://travis-ci.org/plicease/Alien-Build-Plugin-Download-Git)
+# Alien::Build::Git [![Build Status](https://secure.travis-ci.org/plicease/Alien-Build-Plugin-Download-Git.png)](http://travis-ci.org/plicease/Alien-Build-Plugin-Download-Git)
 
-Alien::Build plugin to download from git
+Alien::Build tools for interacting with git
+
+# SEE ALSO
+
+- [Alien::git](https://metacpan.org/pod/Alien::git)
+- [Alien::Build::Plugin::Download::Git](https://metacpan.org/pod/Alien::Build::Plugin::Download::Git)
+- [Alien::Build::Plugin::Fetch::Git](https://metacpan.org/pod/Alien::Build::Plugin::Fetch::Git)
 
 # AUTHOR
 
