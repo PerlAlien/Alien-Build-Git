@@ -11,7 +11,6 @@ use File::Which qw( which );
 
 sub cflags {''}
 sub libs   {''}
-sub bin_dir {()}
 sub dynamic_libs {}
 sub install_type { 'system' }
 
