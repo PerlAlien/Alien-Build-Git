@@ -14,3 +14,4 @@ pod_coverage:
   private:
     - Alien::git
     - Alien::Build::Plugin::Fetch::Git
+    - Alien::Build::Plugin::Download::Git

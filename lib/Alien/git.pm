@@ -9,6 +9,80 @@ use File::Which qw( which );
 # ABSTRACT: Find system git
 # VERSION
 
+=head1 SYNOPSIS
+
+From Perl:
+
+ use Alien::git;
+ use Env qw( @PATH );
+ 
+ unshift @PATH, Alien::git->bin_dir;
+ my $git = Alien::git->exe;
+ 
+ system $git, 'clone 'http://example.com/foo.git';
+
+From L<alienfile>:
+
+ use alienfile;
+ 
+ share {
+ 
+   download [
+     [ '%{git}', 'clone', 'http://example.com/foo.git' ],
+   ];
+   
+   ...
+ 
+ };
+
+=head1 DESCRIPTION
+
+This module, like other L<Alien>s, can be used as a dependency
+on the C<git> source control tool.  Unlike many other L<Alien>s,
+it will I<only> work with a system install.  That is to say,
+it will only work if C<git> is already installed.  Some day down
+the line, it may also attempt to download and install git, as
+other L<Alien>s do in the event that the operating system does
+not provide it.  The main thing that this module provides today
+is a L<alienfile> helper to invoke C<git>.
+
+This module uses the first C<git> in the system C<PATH> by default.
+You can override this by using the C<ALIEN_GIT> environment
+variable.  You should also set this environment variable when
+you are installing this module.
+
+=head1 METHODS
+
+=head2 bin_dir
+
+ my @dirs = Alien::git->bin_dir;
+
+Returns the list of directories that need to be added to
+the PATH in order for C<git> to work.
+
+=head1 HELPERS
+
+=head2 git
+
+ '%{git}'
+
+Returns the command to invoke git.  This is usually the
+full path to the git executable.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Alien>
+
+=item L<Alien::Build::Git>
+
+=item L<Git::Wrapper>
+
+=back
+
+=cut
+
 sub cflags {''}
 sub libs   {''}
 sub dynamic_libs {}
