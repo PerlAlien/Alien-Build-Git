@@ -1,6 +1,6 @@
 use Test2::V0 -no_srand => 1;
 use Alien::Build::Git;
 
-ok 1, 'todo';
+pass 'documentation only';
 
 done_testing
