@@ -10,12 +10,19 @@ my %modules;
 my $post_diag;
 
 $modules{$_} = $_ for qw(
+  Capture::Tiny
   ExtUtils::MakeMaker
+  File::Which
   Test2::V0
   Test::Alien
 );
 
-
+$post_diag = sub {
+  use Alien::git;
+  diag "exe          = @{[ Alien::git->exe               ]}";
+  diag "version      = @{[ Alien::git->version           ]}";
+  diag "install_type = @{[ Alien::git->install_type      ]}";
+};
 
 my @modules = sort keys %modules;
 

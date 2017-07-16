@@ -4,4 +4,6 @@ use Alien::git;
 
 alien_ok 'Alien::git';
 
+isnt( Alien::git->version, 'unknown', 'version is not unknown' );
+
 done_testing
