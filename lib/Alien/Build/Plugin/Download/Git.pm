@@ -6,6 +6,7 @@ use 5.008001;
 use Alien::Build::Plugin;
 use Alien::Build::Plugin::Fetch::Git;
 use Alien::Build::Plugin::Prefer::SortVersions;
+use Alien::Build::Plugin::Extract::Directory;
 use PerlX::Maybe qw( maybe );
 
 # ABSTRACT: Alien::Build plugin to download from git
@@ -18,9 +19,10 @@ sub init
 {
   my($self, $meta) = @_;
   
-  $meta->add_requires('configure' => 'Alien::Build::Plugin::Download::Git' => 0);
-  $meta->add_requires('configure' => 'Alien::Build::Plugin::Fetch::Git' => 0);
-  $meta->add_requires('configure' => 'Alien::Build::Plugin::Prefer::SortVersions' => 0);
+  $meta->add_requires('configure' => 'Alien::Build::Plugin::Download::Git'        => '0.01');
+  $meta->add_requires('configure' => 'Alien::Build::Plugin::Fetch::Git'           => '0.01');
+  $meta->add_requires('configure' => 'Alien::Build::Plugin::Prefer::SortVersions' => '0.65');
+  $meta->add_requires('configure' => 'Alien::Build::Plugin::Extract::Directory'   => '0.65');
 
   my $fetch = Alien::Build::Plugin::Fetch::Git->new;
   $fetch->init($meta);
@@ -31,6 +33,10 @@ sub init
   );
   
   $prefer->init($meta);
+  
+  my $extract = Alien::Build::Plugin::Extract::Directory->new;
+  $extract->init($meta);
+
 }
 
 1;

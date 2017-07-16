@@ -10,7 +10,6 @@ my $build = alienfile_ok q{
   use alienfile;
   
   plugin 'Download::Git';
-  plugin 'Extract::Directory';
 };
 
 $build->load_requires('share');
