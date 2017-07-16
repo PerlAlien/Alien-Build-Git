@@ -13,3 +13,4 @@ pod_coverage:
   # for either Class or method.
   private:
     - Alien::git
+    - Alien::Build::Plugin::Fetch::Git

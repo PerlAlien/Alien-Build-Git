@@ -42,7 +42,7 @@ sub version
 sub alien_helper
 {
   return {
-    git => __PACKAGE__->exe,
+    git => sub { __PACKAGE__->exe },
   }
 }
 

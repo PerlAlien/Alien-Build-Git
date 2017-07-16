@@ -1,4 +1,4 @@
-# Alien::Build::Git [![Build Status](https://secure.travis-ci.org/plicease/Alien-Build-Plugin-Download-Git.png)](http://travis-ci.org/plicease/Alien-Build-Plugin-Download-Git)
+# Alien::Build::Git [![Build Status](https://secure.travis-ci.org/plicease/Alien-Build-Git.png)](http://travis-ci.org/plicease/Alien-Build-Git)
 
 Alien::Build tools for interacting with git
 

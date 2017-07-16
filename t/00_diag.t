@@ -10,11 +10,23 @@ my %modules;
 my $post_diag;
 
 $modules{$_} = $_ for qw(
+  Alien::Build::Plugin
+  Archive::Tar
   Capture::Tiny
+  Exporter
   ExtUtils::MakeMaker
+  File::Temp
   File::Which
+  File::chdir
+  Path::Tiny
+  Test2::Compare::Custom
   Test2::V0
   Test::Alien
+  Test::Alien::Build
+  URI
+  URI::file
+  URI::git
+  lib
 );
 
 $post_diag = sub {
