@@ -10,7 +10,9 @@ my %modules;
 my $post_diag;
 
 $modules{$_} = $_ for qw(
+  Alien::Build
   Alien::Build::Plugin
+  Alien::Build::Plugin::Prefer::SortVersions
   Archive::Tar
   Capture::Tiny
   Exporter
@@ -19,6 +21,8 @@ $modules{$_} = $_ for qw(
   File::Which
   File::chdir
   Path::Tiny
+  PerlX::Maybe
+  PerlX::Maybe::XS
   Test2::Compare::Custom
   Test2::V0
   Test::Alien
