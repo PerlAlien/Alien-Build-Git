@@ -12,6 +12,71 @@ use PerlX::Maybe qw( maybe );
 # ABSTRACT: Alien::Build plugin to download from git
 # VERSION
 
+=head1 SYNOPSIS
+
+ use alienfile;
+ 
+ meta->prop->{start_url} = 'http://example.com/project-foo.git';
+ plugin 'Download::Git' =>(
+   version => qr/^v([0-9\.]+)$/,
+ );
+
+=head1 DESCRIPTION
+
+This plugin downloads projects using git and selects the appropriate tag for
+building.  Typically you want to build using the most recent production tag,
+not just whatever C<master> happens to be at the moment.
+
+This plugin uses these plugins to do the heavy lifting:
+
+=over 4
+
+=item L<Alien::Build::Plugin::Fetch::Git>
+
+=item L<Alien::Build::Plugin::Prefer::SortVersions>
+
+=item L<ALien::Build::Plugin::Extract::Directory>
+
+=back
+
+=head1 PROPERTIES
+
+=head2 filter
+
+his is a regular expression that lets you filter out tags that you do not
+want to consider downloading.  For example, if the tags included name such as
+
+ v1.0.0
+ v1.1.2
+ old-feature-not-included
+ something-else/entirely
+
+You could specify a filter of C<qr/^v[0-9\.]+$/> to make sure only tags that
+appeared to be a version number are included.
+
+=head2 version
+
+Regular expression to parse out the version from tags.  The regular expression
+should store the result in C<$1>.
+
+In the previous example you might use the regular expression C<qr/^v([0-9\.]+/>.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Alien>
+
+=item L<Alien::Build>
+
+=item L<Alien::Build::Git>
+
+=item L<Alien::git>
+
+=back
+
+=cut
+
 has filter => undef;
 has version => undef;
 

@@ -12,6 +12,7 @@ my $post_diag;
 $modules{$_} = $_ for qw(
   Alien::Build
   Alien::Build::Plugin
+  Alien::Build::Plugin::Extract::Directory
   Alien::Build::Plugin::Prefer::SortVersions
   Archive::Tar
   Capture::Tiny
