@@ -39,6 +39,27 @@ This plugin uses these plugins to do the heavy lifting:
 
 =back
 
+In fact this:
+
+ plugin 'Download::Git' => (
+   filter  => $filter,
+   version => $version,
+ );
+
+Is exactly the same as:
+
+ plugin 'Fetch::Git';
+ plugin 'Prefer::SortVersions' => (
+   filter  => filter,
+   version => $version,
+ );
+ plugin 'Extract::Directory';
+
+About the only time you would opt to use L<Alien::Build::Plugin::Fetch::Git>
+directly, (unless you are not into the whole brevity thing), is if you wanted
+to use something other that L<Alien::Build::Plugin::Prefer::SortVersions> to
+choose which version you want to install.
+
 =head1 PROPERTIES
 
 =head2 filter
