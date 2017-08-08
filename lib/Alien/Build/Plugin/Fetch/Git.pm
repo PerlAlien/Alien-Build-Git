@@ -150,7 +150,7 @@ sub can_minus_c
       system(Alien::git->exe, -C => $tmp, 'init');
       $?;
     };
-    $can_minus_c = !! $? == 0 && -d $tmp->child('.git')
+    $can_minus_c = !! $? == 0 && -d $tmp->child('.git');
     $tmp->remove_tree;
   }
   
