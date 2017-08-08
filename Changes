@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.04      2017-08-08 06:31:52 -0400
   - Support older gits that do not have the -C option
 
 0.03_01   2017-07-31 15:10:16 -0400
