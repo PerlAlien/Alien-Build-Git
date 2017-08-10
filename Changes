@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - Add IRC to metadata
+  - Fix for windows
 
 0.04      2017-08-08 06:31:52 -0400
   - Support older gits that do not have the -C option

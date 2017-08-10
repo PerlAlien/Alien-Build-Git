@@ -97,7 +97,10 @@ subtest 'fetch without tag' => sub {
         end;
       };
     },
-  );
+  ) || do {
+    require Data::Dumper;
+    diag Data::Dumper::Dumper($ret);
+  };
 };
 
 done_testing
