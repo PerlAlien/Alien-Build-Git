@@ -5,7 +5,7 @@ use lib 't/lib';
 use Repo;
 use Capture::Tiny qw( capture_merged );
 use Path::Tiny qw( path );
-use Test2::Tools::URL;
+use Test2::Tools::URL 0.02;
 
 my $build = alienfile_ok q{
   use alienfile;
