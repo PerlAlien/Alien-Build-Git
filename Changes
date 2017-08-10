@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.05      2017-08-10 16:42:19 -0400
   - Add IRC to metadata
   - Fix for windows
 
