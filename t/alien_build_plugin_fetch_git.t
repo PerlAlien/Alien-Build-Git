@@ -62,20 +62,6 @@ subtest 'fetch without tag' => sub {
   is $error, '';
   diag $out if $error;
 
-  my $url_check = Test2::Compare::Custom->new(
-    name => 'UrlCheck',
-    code => sub {
-      # this seems to be different from the
-      # documentation?
-      my %args = @_;
-      my $url = URI->new($args{got});
-      return 0 unless $url->scheme eq 'file'
-      &&              $url->host   eq 'localhost'
-      &&              $url->path   eq $example1;
-      1;
-    },
-  );
-
   is(
     $ret,
     hash {
