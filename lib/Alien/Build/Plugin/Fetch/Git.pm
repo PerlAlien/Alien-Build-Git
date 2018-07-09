@@ -63,7 +63,14 @@ sub init
       else
       {
         my $tmp = URI::file->new_abs(".");
-        $tmp->host('localhost');
+        if($^O eq 'MSWin32')
+        {
+          $tmp->host('');
+        }
+        else
+        {
+          $tmp->host('localhost');
+        }
         if($url =~ s/#(.*)$//)
         {
           $tmp->fragment($1);
