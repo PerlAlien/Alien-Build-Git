@@ -30,7 +30,7 @@ From L<alienfile>:
    download [
      [ '%{git}', 'clone', 'http://example.com/foo.git' ],
    ];
-   
+ 
    ...
  
  };
@@ -107,7 +107,7 @@ sub version
       '--version',
     );
   };
-  
+
   $out =~ /git version ([0-9\.]+)/
     ? $1
     : 'unknown';

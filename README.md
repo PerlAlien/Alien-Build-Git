@@ -14,7 +14,7 @@ share {
   download [
     [ '%{git}', 'clone', 'http://example.com/project-foo.git' ],
   ];
-  
+
   ...
 
 };
