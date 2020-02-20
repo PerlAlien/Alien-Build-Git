@@ -6,26 +6,30 @@ Alien::Build tools for interacting with git
 
 Using helper from [Alien::git](https://metacpan.org/pod/Alien::git):
 
-    use alienfile;
-    
-    share {
-    
-      download [
-        [ '%{git}', 'clone', 'http://example.com/project-foo.git' ],
-      ];
-      
-      ...
-    
-    };
+```perl
+use alienfile;
+
+share {
+
+  download [
+    [ '%{git}', 'clone', 'http://example.com/project-foo.git' ],
+  ];
+  
+  ...
+
+};
+```
 
 Using plugin [Alien::Build::Plugin::Download::Git](https://metacpan.org/pod/Alien::Build::Plugin::Download::Git):
 
-    use alienfile;
-    
-    meta->prop->{start_url} = 'http://example.com/project-foo.git';
-    plugin 'Download::Git' =>(
-      version => qr/^v([0-9\.]+)$/,
-    );
+```perl
+use alienfile;
+
+meta->prop->{start_url} = 'http://example.com/project-foo.git';
+plugin 'Download::Git' =>(
+  version => qr/^v([0-9\.]+)$/,
+);
+```
 
 # DESCRIPTION
 
