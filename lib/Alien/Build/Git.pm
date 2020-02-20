@@ -18,7 +18,7 @@ Using helper from L<Alien::git>:
    download [
      [ '%{git}', 'clone', 'http://example.com/project-foo.git' ],
    ];
-   
+ 
    ...
  
  };

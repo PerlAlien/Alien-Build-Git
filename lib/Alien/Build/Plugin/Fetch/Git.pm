@@ -46,9 +46,9 @@ instead be using L<Alien::git> or L<Alien::Build::Plugin::Download::Git>.
 sub init
 {
   my($self, $meta) = @_;
-  
+
   $meta->add_requires('share' => 'Alien::git' => 0);
-  
+
   $meta->register_hook(
     fetch => sub {
       my($build, $url) = @_;
@@ -78,7 +78,7 @@ sub init
         $tmp->path($url);
         $url = $tmp;
       }
-      
+
       my $exe = Alien::git->exe;
 
       if(defined $url->fragment)
@@ -124,11 +124,11 @@ sub init
                    grep { defined $_ }
                    map { m{refs/tags/(.*)$} ? $1 : undef }
                    split /\n\r?/, $output;
-        
+
         return {
           type => 'list',
           list => [
-            map { 
+            map {
               my $tag = $_;
               my $url = $url->clone;
               $url->fragment($tag);
@@ -160,7 +160,7 @@ sub can_minus_c
     $can_minus_c = !! $? == 0 && -d $tmp->child('.git');
     $tmp->remove_tree;
   }
-  
+
   $can_minus_c;
 }
 
