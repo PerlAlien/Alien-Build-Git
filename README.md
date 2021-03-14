@@ -1,4 +1,4 @@
-# Alien::Build::Git [![Build Status](https://travis-ci.org/PerlAlien/Alien-Build-Git.svg)](http://travis-ci.org/PerlAlien/Alien-Build-Git) ![windows](https://github.com/PerlAlien/Alien-Build-Git/workflows/windows/badge.svg) ![macos](https://github.com/PerlAlien/Alien-Build-Git/workflows/macos/badge.svg)
+# Alien::Build::Git ![linux](https://github.com/PerlAlien/Alien-Build-Git/workflows/linux/badge.svg) ![windows](https://github.com/PerlAlien/Alien-Build-Git/workflows/windows/badge.svg) ![macos](https://github.com/PerlAlien/Alien-Build-Git/workflows/macos/badge.svg)
 
 Alien::Build tools for interacting with git
 
