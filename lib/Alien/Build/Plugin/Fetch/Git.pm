@@ -3,6 +3,7 @@ package Alien::Build::Plugin::Fetch::Git;
 use strict;
 use warnings;
 use 5.008001;
+use Alien::Util qw( version_cmp );
 use Alien::Build::Plugin;
 use URI;
 use URI::file;
@@ -10,7 +11,7 @@ use URI::git;
 use Path::Tiny qw( path );
 use File::Temp qw( tempdir );
 use File::chdir;
-use Capture::Tiny qw( capture_merged );
+use Capture::Tiny qw( capture_merged capture_stdout );
 
 # ABSTRACT: Alien::Build plugin to fetch from git
 # VERSION
@@ -86,20 +87,35 @@ sub init
         local $CWD = tempdir( CLEANUP => 1 );
         my($tag) = $url->fragment;
         $url->fragment(undef);
-        $build->system('%{git}', 'clone', "$url");
-        die "command failed" if $?;
-        my($dir) = path(".")->absolute->children;
-
-        # mildly prefer the -C version as it will handle spaces in $dir.
-        if(can_minus_c())
+        $DB::single = 1;
+        if(can_branch_clone())
         {
-          $build->system('%{git}', -C => "$dir", 'checkout', $tag);
+          $build->system('%{git}', 'clone', '--depth' => 1, '--branch', "$tag", "$url");
         }
         else
         {
-          $build->system("cd $dir ; %{git} checkout $tag");
+          $build->system('%{git}', 'clone', "$url");
         }
         die "command failed" if $?;
+        my($dir) = path(".")->absolute->children;
+
+        if(can_branch_clone())
+        {
+          # do nothing
+        }
+        else
+        {
+          # mildly prefer the -C version as it will handle spaces in $dir.
+          if(can_minus_c())
+          {
+            $build->system('%{git}', -C => "$dir", 'checkout', $tag);
+          }
+          else
+          {
+            $build->system("cd $dir ; %{git} checkout $tag");
+          }
+          die "command failed" if $?;
+        }
         return {
           type     => 'file',
           filename => $dir->basename,
@@ -162,6 +178,25 @@ sub can_minus_c
   }
 
   $can_minus_c;
+}
+
+my $can_branch_clone;
+sub can_branch_clone
+{
+  unless(defined $can_branch_clone)
+  {
+    require Alien::git;
+    if(version_cmp(Alien::git->version, "1.8.3.5") >= 0)
+    {
+      $can_branch_clone = 1;
+    }
+    else
+    {
+      $can_branch_clone = 0;
+    }
+  }
+
+  $can_branch_clone;
 }
 
 1;

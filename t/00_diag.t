@@ -14,6 +14,7 @@ $modules{$_} = $_ for qw(
   Alien::Build::Plugin
   Alien::Build::Plugin::Extract::Directory
   Alien::Build::Plugin::Prefer::SortVersions
+  Alien::Util
   Archive::Tar
   Capture::Tiny
   Exporter
