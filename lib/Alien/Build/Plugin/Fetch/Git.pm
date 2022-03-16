@@ -87,7 +87,6 @@ sub init
         local $CWD = tempdir( CLEANUP => 1 );
         my($tag) = $url->fragment;
         $url->fragment(undef);
-        $DB::single = 1;
         if(can_branch_clone())
         {
           $build->system('%{git}', 'clone', '--depth' => 1, '--branch', "$tag", "$url");
