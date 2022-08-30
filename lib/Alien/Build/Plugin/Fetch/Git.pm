@@ -57,6 +57,8 @@ sub init
       $url ||= $build->meta_prop->{start_url};
       die "no default URL provided!" unless defined $url;
 
+      my $protocol;
+
       if($url =~ /^[a-zA-Z0-9]+:/ && !( $url =~ /^[A-Z]:/i && $^O eq 'MSWin32' ))
       {
         $url = URI->new($url);
@@ -119,6 +121,7 @@ sub init
           type     => 'file',
           filename => $dir->basename,
           path     => $dir->stringify,
+          protocol => $url->scheme,
         };
       }
       else
@@ -154,6 +157,7 @@ sub init
               \%h;
             } @tags
           ],
+          protocol => $url->scheme,
         };
       }
     },
