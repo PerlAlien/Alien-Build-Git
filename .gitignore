@@ -1,3 +1,5 @@
 /Alien-Build-Git-*
 /.build
 /.tmp
+*.old
+*.orig
